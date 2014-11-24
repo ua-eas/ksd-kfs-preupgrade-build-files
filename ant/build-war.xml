@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<project name="ua-upgrade-kfs" default="help" basedir="../../kfs">
+	<!-- import foundation build file -->
+	<import file="${basedir}/build.xml"/>
+
+	<!-- include custom properties files -->
+	<loadproperties srcfile="../${config.file.build.dir}/config/ua-build.properties" />
+	<loadproperties srcfile="../${config.file.build.dir}/config/${build.environment}-build.properties" />
+
+	<target name="init-local-properties" description="Initialize local build properties">
+		<property name="war.deploy.dir" value="/uaccess/KATTS/Internal/build/kfs/wars/kfs5_3-upgrade" />
+	</target>
+
+	<target name="echo-local-properties" depends="init-local-properties" description="Print local properties">
+		<echoproperties />
+	</target>
+
+	<target name="echo-all-properties" depends="init-properties,init-local-properties" description="Print all loaded properties">
+		<echoproperties />
+	</target>
+
+	<target name="help" description="Describe targets">
+		<echo>
+			init-local-properties: Initializes local build properties.
+
+			echo-local-properties: Prints the local build properties.
+
+			echo-all-properties: Prints the local and imported build properties.
+		</echo>
+	</target>
+
+</project>
